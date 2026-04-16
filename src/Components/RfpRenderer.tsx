@@ -11,9 +11,9 @@ const RfpRenderer = ({ data }: { data: RfpBlockType[] }) => {
 
   useEffect(() => {
     if (!ref.current) return;
-
     let page: RfpBlockType[] = [];
     let height = 0;
+
     const result: RfpBlockType[][] = [];
 
     data.forEach((block, i) => {
@@ -25,14 +25,15 @@ const RfpRenderer = ({ data }: { data: RfpBlockType[] }) => {
       el.style.fontSize = "14px";
       el.style.lineHeight = "1.5";
 
+      // Rendering HTML block for height cal
       el.innerHTML =
         block.type === "list"
           ? `<ul>${block.items?.map((x) => `<li>${x}</li>`).join("")}</ul>`
           : block.type === "image"
-          ? `<img src="${block.src}" style="height:150px;width:100%;" />`
-          : block.type === "heading"
-          ? `<h1 style="font-size:20px;font-weight:bold;">${block.content}</h1>`
-          : `<p>${block.content || ""}</p>`;
+            ? `<img src="${block.src}" style="height:150px;width:100%;" />`
+            : block.type === "heading"
+              ? `<h1 style="font-size:22px;font-weight:bold;">${block.content}</h1>`
+              : `<p>${block.content || ""}</p>`;
 
       document.body.appendChild(el);
       const h = el.offsetHeight;
@@ -61,7 +62,7 @@ const RfpRenderer = ({ data }: { data: RfpBlockType[] }) => {
   }, [data, refresh]);
 
   return (
-    <div className="bg-gray-100 min-h-screen py-10 space-y-8">
+    <div className="bg-gray-200 min-h-screen py-4 space-y-4">
       <div ref={ref} />
 
       {pages.map((p, pageIndex) => {
@@ -78,7 +79,6 @@ const RfpRenderer = ({ data }: { data: RfpBlockType[] }) => {
         });
 
         if (current.length) grouped.push(current);
-
         const cols: RfpBlockType[][] = [[], [], []];
 
         grouped.forEach((group, i) => {
@@ -88,13 +88,39 @@ const RfpRenderer = ({ data }: { data: RfpBlockType[] }) => {
         return (
           <div
             key={pageIndex}
-            className="bg-white w-[850px] h-[800px] mx-auto p-6"
+            className="bg-white shadow-2xl border border-gray-200 w-[900px] h-[800px] mx-auto p-8 flex flex-col rounded-md"
           >
-            <div className="flex">
+            {/* HEADER SECTION  */}
+            <div className="flex items-center justify-between px-8 py-4 border-b border-gray-200">
+              <div className="flex items-center gap-3">
+                <img
+                  src="https://www.actuality.live/__0101__new__actuality__/assets/actuality.svg"
+                  alt="logo"
+                  className="w-10 h-8"
+                />
+                <div>
+                  <p className="text-sm font-semibold text-gray-800">
+                    Actuality
+                  </p>
+                  <p className="text-xs text-gray-500">Request for Proposal</p>
+                </div>
+              </div>
+
+              <div className="text-right text-xs text-gray-500">
+                <p>Version 1.0</p>
+                <p>{new Date().toLocaleDateString()}</p>
+              </div>
+            </div>
+
+            {/* CONTENT SECTION  */}
+            <div className="flex flex-1 px-8 py-6">
               {cols.map((col, i) => (
-                <div key={i} className="w-1/3 px-3">
+                <div
+                  key={i}
+                  className="w-1/3 px-4 border-r last:border-none border-gray-200"
+                >
                   {col.map((b, j) => (
-                    <div key={j} className="mb-4">
+                    <div key={j} className="mb-5">
                       <RfpBlock
                         block={b}
                         onEdit={(val, idx) => {
@@ -116,7 +142,8 @@ const RfpRenderer = ({ data }: { data: RfpBlockType[] }) => {
               ))}
             </div>
 
-            <div className="text-center text-sm text-gray-400 mt-4">
+            {/* FOOTER SECTION  */}
+            <div className="text-center text-xs text-gray-400 pb-4">
               Page {pageIndex + 1}
             </div>
           </div>
