@@ -22,7 +22,7 @@ export const data: RfpBlockType[] = [
   },
   {
     type: "image",
-    src: "https://i.pinimg.com/736x/37/2f/ea/372fea679e94e69229518817361a3d40.jp",
+    src: "https://i.pinimg.com/736x/37/2f/ea/372fea679e94e69229518817361a3d40.jpg",
     alt: "System Architecture Diagram",
     caption: "Fig 1. High-level architecture overview",
   },
