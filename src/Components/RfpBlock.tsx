@@ -1,53 +1,110 @@
 import type { RfpBlockType } from "../types";
 
-const RfpBlock = ({ block }: { block: RfpBlockType }) => {
-  switch (block.type) {
-    case "heading": {
-      const level = block.level || 1;
+const RfpBlock = ({
+  block,
+  onEdit,
+}: {
+  block: RfpBlockType;
+  onEdit: (value: string, index?: number) => void;
+}) => {
+  if (block.type === "heading") {
+    const level = block.level || 1;
 
-      if (level === 1)
-        return <h1 className="font-bold text-2xl mb-2">{block.content}</h1>;
-      if (level === 2)
-        return <h2 className="font-bold text-xl mb-2">{block.content}</h2>;
-      if (level === 3)
-        return <h3 className="font-bold text-lg mb-2">{block.content}</h3>;
-
-      return <h4 className="font-bold mb-2">{block.content}</h4>;
-    }
-
-    case "paragraph":
-      return <p className="mb-2">{block.content}</p>;
-
-    case "list":
+    if (level === 1)
       return (
-        <ul
-          className={`ml-4 mb-2 ${
-            block.style === "ordered" ? "list-decimal" : "list-disc"
-          }`}
+        <h1
+          contentEditable
+          suppressContentEditableWarning
+          onBlur={(e) => onEdit(e.currentTarget.textContent || "")}
+          className="font-bold text-xl mb-2"
         >
-          {block.items?.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
-        </ul>
+          {block.content}
+        </h1>
       );
 
-    case "image":
+    if (level === 2)
       return (
-        <div className="mb-4">
-          <img
-            src={block.src}
-            alt={block.alt}
-            className="w-full h-48 object-cover rounded"
-          />
-          {block.caption && (
-            <p className="text-sm text-gray-500">{block.caption}</p>
-          )}
-        </div>
+        <h2
+          contentEditable
+          suppressContentEditableWarning
+          onBlur={(e) => onEdit(e.currentTarget.textContent || "")}
+          className="font-semibold text-lg mb-2"
+        >
+          {block.content}
+        </h2>
       );
 
-    default:
-      return null;
+    return (
+      <h3
+        contentEditable
+        suppressContentEditableWarning
+        onBlur={(e) => onEdit(e.currentTarget.textContent || "")}
+        className="font-semibold mb-2"
+      >
+        {block.content}
+      </h3>
+    );
   }
+
+  if (block.type === "paragraph") {
+    return (
+      <p
+        contentEditable
+        suppressContentEditableWarning
+        onBlur={(e) => onEdit(e.currentTarget.textContent || "")}
+        className="mb-2 text-sm"
+      >
+        {block.content}
+      </p>
+    );
+  }
+
+  if (block.type === "list") {
+    return (
+      <ul
+        className={`ml-4 mb-2 text-sm ${
+          block.style === "ordered" ? "list-decimal" : "list-disc"
+        }`}
+      >
+        {block.items?.map((item, i) => (
+          <li
+            key={i}
+            contentEditable
+            suppressContentEditableWarning
+            onBlur={(e) =>
+              onEdit(e.currentTarget.textContent || "", i)
+            }
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  if (block.type === "image") {
+    return (
+      <div className="mb-3">
+        <img
+          src={block.src}
+          alt={block.alt}
+          className="w-full h-[140px] object-cover"
+        />
+        {block.caption && (
+          <p
+            contentEditable
+            suppressContentEditableWarning
+            onBlur={(e) => onEdit(e.currentTarget.textContent || "")}
+            className="text-xs text-gray-500 text-center mt-1"
+          >
+            {block.caption}
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  return null;
 };
 
 export default RfpBlock;
