@@ -81,10 +81,10 @@ The focus was to keep the layout readable instead of perfectly packed.
 <img width="457" height="434" alt="image" src="https://github.com/user-attachments/assets/f3628ffd-0dc5-415a-82b8-5c3bea401531" />
 
 ### Page 2 — Development & Testing phases
-<img width="457" height="434" alt="image" src="https://github.com/user-attachments/assets/f2632209-1ca5-4314-922a-16988acdf285" />
+<img width="457" height="434" alt="image" src="https://github.com/user-attachments/assets/473d76c8-7d03-4ae5-bf56-a62e61af0bfb" />
 
 ### Page 3 — Maintenance & Support
-<img width="457" height="434" alt="image" src="https://github.com/user-attachments/assets/80b8e53c-1c32-422b-b938-f1c9e8e43d85" />
+<img width="457" height="434" alt="image" src="https://github.com/user-attachments/assets/ff11aa82-c9e3-4f85-b5e1-10e2525eee9c" />
 
 ---
 
@@ -145,3 +145,7 @@ Key areas handled:
 Instead of forcing perfect column filling, the solution prioritizes keeping related content together, which improves readability but may leave small gaps.
 
 Overall, the goal was to build a clean, maintainable solution that handles real-world document rendering challenges.
+
+---
+
+Built with ❤️ for the Actuality Frontend Engineer role
