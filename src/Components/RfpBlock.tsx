@@ -100,11 +100,13 @@ const RfpBlock = ({
   if (block.type === "image") {
     return (
       <div className="mb-4">
-        <img
-          src={block.src}
-          alt={block.alt}
-          className="w-full h-[160px] object-cover rounded-md"
-        />
+       <img
+  src={block.src}
+  crossOrigin="anonymous"
+  referrerPolicy="no-referrer"
+  alt={block.alt}
+  className="w-full h-[160px] object-cover rounded-md"
+/>
         {block.caption && (
           <p
             contentEditable

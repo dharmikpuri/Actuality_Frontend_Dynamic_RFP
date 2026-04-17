@@ -8,7 +8,7 @@ export const data: RfpBlockType[] = [
   },
   {
     type: "image",
-    src: "https://i.pinimg.com/736x/37/2f/ea/372fea679e94e69229518817361a3d40.jpg",
+    src: "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=710&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     alt: "System Architecture Diagram",
     caption: "Fig 1. High-level architecture overview",
   },
@@ -54,7 +54,7 @@ export const data: RfpBlockType[] = [
   },
   {
     type: "image",
-    src: "https://i.pinimg.com/1200x/1b/37/28/1b372839d7d4a3b38dbe09c1399c2e80.jpg",
+    src: "https://images.unsplash.com/photo-1604074131665-7a4b13870ab4?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     alt: "Design Mockup",
     caption: "Fig 2. Design phase preview",
   },
