@@ -32,10 +32,10 @@ const RfpRenderer = ({ data }: { data: RfpBlockType[] }) => {
         block.type === "list"
           ? `<ul>${block.items?.map((x) => `<li>${x}</li>`).join("")}</ul>`
           : block.type === "image"
-          ? `<img src="${block.src}" style="height:160px;width:100%;" />`
-          : block.type === "heading"
-          ? `<h1 style="font-size:22px;font-weight:bold;">${block.content}</h1>`
-          : `<p>${block.content || ""}</p>`;
+            ? `<img src="${block.src}" style="height:160px;width:100%;" />`
+            : block.type === "heading"
+              ? `<h1 style="font-size:22px;font-weight:bold;">${block.content}</h1>`
+              : `<p>${block.content || ""}</p>`;
 
       document.body.appendChild(el);
       const h = el.offsetHeight;
@@ -45,9 +45,7 @@ const RfpRenderer = ({ data }: { data: RfpBlockType[] }) => {
 
       if (
         height + h > PAGE_HEIGHT ||
-        (block.type === "heading" &&
-          next?.type === "paragraph" &&
-          height > PAGE_HEIGHT - 150)
+        (block.type === "heading" && height > PAGE_HEIGHT - 120)
       ) {
         if (page.length) result.push(page);
         page = [];
@@ -63,20 +61,20 @@ const RfpRenderer = ({ data }: { data: RfpBlockType[] }) => {
     setPages(result);
   }, [data, refresh]);
 
-const handleExportPDF = async () => {
-  try {
-    setExporting(true);
-    await exportToPDF({
-      pageRefs,
-      data,
-    });
-  } catch (err) {
-    console.error("PDF export failed:", err);
-    alert("PDF export failed. Please try again.");
-  } finally {
-    setExporting(false);
-  }
-};
+  const handleExportPDF = async () => {
+    try {
+      setExporting(true);
+      await exportToPDF({
+        pageRefs,
+        data,
+      });
+    } catch (err) {
+      console.error("PDF export failed:", err);
+      alert("PDF export failed. Please try again.");
+    } finally {
+      setExporting(false);
+    }
+  };
 
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -119,9 +117,31 @@ const handleExportPDF = async () => {
           if (current.length) grouped.push(current);
 
           const cols: RfpBlockType[][] = [[], [], []];
+          const heights = [0, 0, 0];
 
-          grouped.forEach((group, i) => {
-            cols[i % 3].push(...group);
+          grouped.forEach((group) => {
+            let groupHeight = 0;
+
+            group.forEach((b) => {
+              if (b.type === "heading") groupHeight += 40;
+              else if (b.type === "paragraph") groupHeight += 80;
+              else if (b.type === "list")
+                groupHeight += (b.items?.length || 1) * 24;
+              else if (b.type === "image") groupHeight += 180;
+            });
+
+            let minHeight = heights[0];
+            let columnIndex = 0;
+
+            for (let i = 1; i < heights.length; i++) {
+              if (heights[i] < minHeight) {
+                minHeight = heights[i];
+                columnIndex = i;
+              }
+            }
+
+            cols[columnIndex].push(...group);
+            heights[columnIndex] += groupHeight;
           });
 
           return (

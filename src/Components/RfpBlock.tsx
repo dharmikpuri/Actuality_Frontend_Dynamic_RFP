@@ -17,7 +17,7 @@ const RfpBlock = ({
           contentEditable
           suppressContentEditableWarning
           onBlur={(e) => onEdit(e.currentTarget.textContent || "")}
-          className="font-bold text-2xl mb-3 text-gray-900 break-words"
+          className="font-bold text-2xl mb-3 text-gray-900 break-words break-all"
         >
           {block.content}
         </h1>
@@ -29,7 +29,7 @@ const RfpBlock = ({
           contentEditable
           suppressContentEditableWarning
           onBlur={(e) => onEdit(e.currentTarget.textContent || "")}
-          className="font-semibold text-xl mb-2 text-gray-900 break-words"
+          className="font-semibold text-xl mb-2 text-gray-900 break-words break-all"
         >
           {block.content}
         </h2>
@@ -41,7 +41,7 @@ const RfpBlock = ({
           contentEditable
           suppressContentEditableWarning
           onBlur={(e) => onEdit(e.currentTarget.textContent || "")}
-          className="font-semibold text-xl mb-2 text-gray-900 break-words"
+          className="font-semibold text-xl mb-2 text-gray-900 break-words break-all"
         >
           {block.content}
         </h3>
@@ -52,7 +52,7 @@ const RfpBlock = ({
         contentEditable
         suppressContentEditableWarning
         onBlur={(e) => onEdit(e.currentTarget.textContent || "")}
-        className="font-semibold text-xl mb-2 text-gray-900 break-words"
+        className="font-semibold text-xl mb-2 text-gray-900 break-words break-all"
       >
         {block.content}
       </h4>
@@ -66,7 +66,7 @@ const RfpBlock = ({
         contentEditable
         suppressContentEditableWarning
         onBlur={(e) => onEdit(e.currentTarget.textContent || "")}
-        className="mb-3 text-sm text-gray-700 leading-relaxed break-words"
+        className="mb-3 text-sm text-gray-700 leading-relaxed break-words break-all"
       >
         {block.content}
       </p>
@@ -87,7 +87,7 @@ const RfpBlock = ({
             contentEditable
             suppressContentEditableWarning
             onBlur={(e) => onEdit(e.currentTarget.textContent || "", i)}
-            className="break-words"
+            className="break-words break-all"
           >
             {item}
           </li>
@@ -100,13 +100,13 @@ const RfpBlock = ({
   if (block.type === "image") {
     return (
       <div className="mb-4">
-       <img
-  src={block.src}
-  crossOrigin="anonymous"
-  referrerPolicy="no-referrer"
-  alt={block.alt}
-  className="w-full h-[160px] object-cover rounded-md"
-/>
+        <img
+          src={block.src}
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+          alt={block.alt}
+          className="w-full h-[160px] object-cover rounded-md"
+        />
         {block.caption && (
           <p
             contentEditable

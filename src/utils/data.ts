@@ -8,7 +8,7 @@ export const data: RfpBlockType[] = [
   },
   {
     type: "image",
-    src: "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=710&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    src: "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?q=80&w=710&auto=format&fit=crop",
     alt: "System Architecture Diagram",
     caption: "Fig 1. High-level architecture overview",
   },
@@ -18,12 +18,37 @@ export const data: RfpBlockType[] = [
       "This project involves the design and development of a modern enterprise platform focused on scalability, performance, and user experience.",
   },
   {
+    type: "paragraph",
+    content:
+      "The platform aims to streamline operations, enhance user engagement, and provide a flexible architecture for future growth.",
+  },
+  {
     type: "list",
     style: "unordered",
     items: [
       "Cloud-native architecture",
       "Microservices-based backend",
       "Responsive dashboard UI",
+    ],
+  },
+
+  {
+    type: "heading",
+    level: 2,
+    content: "Architecture Overview",
+  },
+  {
+    type: "paragraph",
+    content:
+      "The system architecture is designed with modular services ensuring scalability, maintainability, and fault tolerance.",
+  },
+  {
+    type: "list",
+    style: "unordered",
+    items: [
+      "Service-oriented architecture",
+      "Horizontal scalability",
+      "API-first design approach",
     ],
   },
 
@@ -46,31 +71,40 @@ export const data: RfpBlockType[] = [
       "Define project timeline",
     ],
   },
-
   {
     type: "heading",
     level: 2,
     content: "Phase 2: Design",
   },
   {
-    type: "image",
-    src: "https://images.unsplash.com/photo-1604074131665-7a4b13870ab4?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    alt: "Design Mockup",
-    caption: "Fig 2. Design phase preview",
+    type: "paragraph",
+    content:
+      "The design phase focuses on usability, accessibility standards, and maintaining a consistent visual language across modules.",
+  },
+  {
+    type: "list",
+    style: "unordered",
+    items: ["Accessibility compliance (WCAG)", "Component reusability"],
   },
   {
     type: "paragraph",
     content:
-      "In this phase, the system architecture and UI/UX designs will be created to ensure scalability and a seamless user experience.",
+      "Additionally, the design ensures scalability and modular architecture for long-term maintainability and flexibility.",
   },
   {
     type: "list",
     style: "unordered",
     items: [
-      "Wireframing and prototyping",
-      "Design system setup",
-      "Database schema design",
+      "Responsive design patterns",
+      "Reusable UI components",
+      "Design tokens and theming",
     ],
+  },
+  {
+    type: "image",
+    src: "https://images.unsplash.com/photo-1604074131665-7a4b13870ab4?q=80&w=687&auto=format&fit=crop",
+    alt: "Design Mockup",
+    caption: "Fig 2. Design phase preview",
   },
 
   {
