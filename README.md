@@ -148,4 +148,4 @@ Overall, the goal was to build a clean, maintainable solution that handles real-
 
 ---
 
-Built with ❤️ for the Actuality Frontend Engineer role
+Architected  with ❤️ by Dharmik for Actuality Frontend Engineer role
